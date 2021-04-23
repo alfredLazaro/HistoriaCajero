@@ -18,6 +18,8 @@ public class PruebaGitSis2 {
         System.out.println("hola mundo");
         System.out.println("aver ahora ");
         int a ;
+        System.out.println("la ultima modificacion aun con problemas"
+                + "");
     }
     
 }
