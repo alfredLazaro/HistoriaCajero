@@ -20,6 +20,9 @@ public class PruebaGitSis2 {
         int a ;
         System.out.println("la ultima modificacion aun con problemas"
                 + "");
+        int b = 5;
+        a = 10;
+        int suma = a+b;
     }
     
 }
