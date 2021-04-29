@@ -87,13 +87,13 @@ END;
 GO
 
 CREATE TABLE [Inscripciones] (
-    [codSis] INTEGER NOT NULL IDENTITY(2000220099, 2),
+    [codSis] INTEGER NOT NULL,
     [gestionInscrip] VARCHAR(255) NULL,
     [pago] INTEGER NULL,
 	constraint FK_INSCRIPCIONES_CODSIS foreign key(codSis) references estudiante (codSis)  
 );
 GO
-
+/*
 INSERT INTO Inscripciones([gestionInscrip],[pago]) VALUES('II19',0),('II19',0),('I20',0),('II19',0),('I20',0),('I20',0),('I20',0),('II19',0),('II19',0),('II20',0);
 INSERT INTO Inscripciones([gestionInscrip],[pago]) VALUES('II20',0),('II19',0),('II20',0),('II20',0),('II19',0),('I20',0),('II20',0),('II19',0),('II19',0),('II19',0);
 INSERT INTO Inscripciones([gestionInscrip],[pago]) VALUES('I20',0),('I20',0),('II20',0),('II19',0),('I20',0),('II19',0),('II20',0),('II20',0),('II20',0),('II19',0);
@@ -104,7 +104,7 @@ INSERT INTO Inscripciones([gestionInscrip],[pago]) VALUES('II19',0),('II20',0),(
 INSERT INTO Inscripciones([gestionInscrip],[pago]) VALUES('II19',0),('I20',0),('I20',0),('II20',0),('II20',0),('II19',0),('I20',0),('II19',0),('I20',0),('II20',0);
 INSERT INTO Inscripciones([gestionInscrip],[pago]) VALUES('I20',0),('I20',0),('II19',0),('I20',0),('II20',0),('II20',0),('II19',0),('I20',0),('I20',0),('II19',0);
 INSERT INTO Inscripciones([gestionInscrip],[pago]) VALUES('II20',0),('I20',0),('I20',0),('II19',0),('II20',0),('II19',0),('II20',0),('II20',0),('II20',0),('II20',0);
-
+*/
 
 --tabla materia
 CREATE TABLE Materia(
