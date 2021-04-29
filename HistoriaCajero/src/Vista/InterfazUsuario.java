@@ -154,9 +154,23 @@ public class InterfazUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+        //captura los datos
     private void btVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerificarActionPerformed
-        // TODO add your handling code here:
+        String codSis=capturaSis.getText();
+        //procesamos el texto codSis
+        //nos deberia devolver ...el nombre,apellido y un false en su matricula
+        if (evt.getSource()==btVerificar){
+            
+            if (true){
+            // si es correcta 
+            JOptionPane.showMessageDialog(null,"El codigo sis es correcto"+codSis);
+            
+            }else{
+            //si no es correcta
+            JOptionPane.showMessageDialog(null,"Ese codigo sis es incorrecto "
+                    + " verifique porfavor!");
+            }
+        }
     }//GEN-LAST:event_btVerificarActionPerformed
 
     private void btCobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCobroActionPerformed
@@ -165,16 +179,7 @@ public class InterfazUsuario extends javax.swing.JFrame {
     ///verificacion 
     private void btVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btVerificarMouseClicked
         
-        if (evt.getSource()==btVerificar){
-            
-            if (true){
-            // si es correcta 
-            JOptionPane.showMessageDialog(null,"El codigo sis es correcto");
-            
-            }else{
-            
-            }
-        }
+        
     }//GEN-LAST:event_btVerificarMouseClicked
 
     private void btCobroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCobroMouseClicked
