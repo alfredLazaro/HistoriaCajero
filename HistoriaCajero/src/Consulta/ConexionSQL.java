@@ -14,7 +14,7 @@ public class ConexionSQL {
         String conexionURL = "jdbc:sqlserver://localhost:1433;"
                 + "database=Umss;" 
                 + "user=sa;"
-                + "password=;" //contraseña de usuario sa
+                + "password=mauri3011;" //contraseña de usuario sa
                 + "loginTimeout=30;";
         try{
             Connection con = DriverManager.getConnection(conexionURL);

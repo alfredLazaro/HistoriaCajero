@@ -87,7 +87,7 @@ END;
 GO
 
 CREATE TABLE [Inscripciones] (
-    [codSis] INTEGER NOT NULL IDENTITY(2000220099, 2),
+    [codSis] INTEGER NOT NULL,
     [gestionInscrip] VARCHAR(255) NULL,
     [pago] INTEGER NULL,
 	constraint FK_INSCRIPCIONES_CODSIS foreign key(codSis) references estudiante (codSis)  

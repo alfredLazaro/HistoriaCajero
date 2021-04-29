@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Consulta.ConsultaBD;
 import javax.swing.JOptionPane;
 
 /**
@@ -89,10 +90,6 @@ public class InterfazUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btSiguiente)
-                .addGap(23, 23, 23))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -109,19 +106,24 @@ public class InterfazUsuario extends javax.swing.JFrame {
                         .addGap(90, 90, 90)
                         .addComponent(btCobro))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(btVerificar))))
+                        .addGap(135, 135, 135)
+                        .addComponent(btVerificar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(jLabel1)))
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btSiguiente)
+                        .addGap(23, 23, 23))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,12 +144,9 @@ public class InterfazUsuario extends javax.swing.JFrame {
                 .addComponent(btCobro)
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(44, 44, 44))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)))
+                    .addComponent(jLabel4)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(btSiguiente)
                 .addContainerGap())
         );
@@ -156,11 +155,21 @@ public class InterfazUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerificarActionPerformed
-        // TODO add your handling code here:
+        // Verificar existencia de estudiante por codSis
+        int codSis = Integer.parseInt(capturaSis.getText());
+        String res = ConsultaBD.existeAlumno(codSis);
+        JOptionPane.showMessageDialog(null, res);
     }//GEN-LAST:event_btVerificarActionPerformed
 
     private void btCobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCobroActionPerformed
-        // TODO add your handling code here:
+        //Registro del Cobro al Estudiante Identificado
+        int codSis = Integer.parseInt(capturaSis.getText());
+        String gestion = "I21";
+        if(ConsultaBD.noPago(codSis,gestion)){
+            ConsultaBD.registroPago(codSis, gestion, 14);
+        }else{
+            JOptionPane.showMessageDialog(null, "Estudiante ya realizo pago");
+        }
     }//GEN-LAST:event_btCobroActionPerformed
     ///verificacion 
     private void btVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btVerificarMouseClicked
