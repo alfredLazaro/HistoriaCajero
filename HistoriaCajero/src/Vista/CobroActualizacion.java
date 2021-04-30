@@ -21,6 +21,7 @@ public class CobroActualizacion extends javax.swing.JFrame {
         initComponents();
         this.codSis=codSis;
         datos=new ConsultaBD();
+        this.setResizable(false);
     }
 
     /**
