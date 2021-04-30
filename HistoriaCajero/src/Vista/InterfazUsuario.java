@@ -6,13 +6,15 @@
 package Vista;
 
 import javax.swing.JOptionPane;
-
+import Consulta.*;
 /**
  *
  * @author javier
  */
 public class InterfazUsuario extends javax.swing.JFrame {
-
+    private ConsultaBD datos=new Consulta.ConsultaBD();
+    private  boolean existe=false;
+    
     /**
      * Creates new form InterfazUsuario
      */
@@ -29,21 +31,28 @@ public class InterfazUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btVerificar = new javax.swing.JButton();
-        btCobro = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         capturaSis = new javax.swing.JTextPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        capturaCobro = new javax.swing.JTextPane();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        devuelveCambio = new javax.swing.JTextPane();
-        btSiguiente = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        btVerificar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        btSiguiente = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        textRetorno = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+
+        jLabel1.setText("Ingrese el codigo sis del estudiante");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        capturaSis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                capturaSisKeyTyped(evt);
+            }
+        });
+        jScrollPane1.setViewportView(capturaSis);
 
         btVerificar.setText("Verificar");
         btVerificar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -57,137 +66,142 @@ public class InterfazUsuario extends javax.swing.JFrame {
             }
         });
 
-        btCobro.setText("Cobrar");
-        btCobro.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btCobroMouseClicked(evt);
-            }
-        });
-        btCobro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCobroActionPerformed(evt);
-            }
-        });
-
-        jScrollPane1.setViewportView(capturaSis);
-
-        jScrollPane2.setViewportView(capturaCobro);
-
-        jScrollPane3.setViewportView(devuelveCambio);
-
-        btSiguiente.setText("Siguiente");
-
-        jLabel1.setText("Ingrese el codigo sis del estudiante");
-
         jLabel2.setText("El monto a cobrar es de 17bs");
 
-        jLabel3.setText("Cobrado");
+        btSiguiente.setText("Siguiente");
+        btSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSiguienteActionPerformed(evt);
+            }
+        });
 
-        jLabel4.setText("Vuelto");
+        jLabel4.setText("Ingrese codigo sis");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(btVerificar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(101, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btSiguiente)
+                .addGap(47, 47, 47))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(btVerificar)
+                .addGap(55, 55, 55)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btSiguiente)
+                .addGap(156, 156, 156))
+        );
+
+        textRetorno.setColumns(20);
+        textRetorno.setRows(5);
+        jScrollPane2.setViewportView(textRetorno);
+
+        jLabel3.setText("Datos de estudiante, segun el codigo sis");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btSiguiente)
-                .addGap(23, 23, 23))
-            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(btCobro))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(btVerificar))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jLabel1)))
-                .addContainerGap(96, Short.MAX_VALUE))
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btVerificar)
-                .addGap(28, 28, 28)
-                .addComponent(jLabel2)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(btCobro)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(44, 44, 44))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)))
-                .addComponent(btSiguiente)
-                .addContainerGap())
+                .addGap(49, 49, 49)
+                .addComponent(jLabel3)
+                .addGap(53, 53, 53)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(136, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
         //captura los datos
+    private int sis;
     private void btVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerificarActionPerformed
-        String codSis=capturaSis.getText();
-        //procesamos el texto codSis
-        //nos deberia devolver ...el nombre,apellido y un false en su matricula
-        if (evt.getSource()==btVerificar){
-            
-            if (true){
-            // si es correcta 
-            JOptionPane.showMessageDialog(null,"El codigo sis es correcto"+codSis);
-            
-            }else{
-            //si no es correcta
-            JOptionPane.showMessageDialog(null,"Ese codigo sis es incorrecto "
-                    + " verifique porfavor!");
-            }
-        }
-    }//GEN-LAST:event_btVerificarActionPerformed
+        try{
+            String codSis=capturaSis.getText();
+            sis = Integer.parseInt(codSis);
+           
+            //procesamos el texto codSis
+            //nos deberia devolver ...el nombre,apellido y un false en su matricula
+            if (evt.getSource()==btVerificar){
 
-    private void btCobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCobroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btCobroActionPerformed
+                if (datos.existeAlumno(sis)!="No se encontro el alumno en la BD"){
+                    String verificacion=datos.existeAlumno(sis);
+                    textRetorno.setText(verificacion);
+          
+                existe=true;
+
+                }else{
+                //si no es correcta
+                JOptionPane.showMessageDialog(this,"Ese codigo sis es incorrecto "
+                        + " verifique porfavor!");
+                }
+            }
+        }catch(Exception e){
+            if (true){
+            JOptionPane.showMessageDialog(this,"Introdusca un numero porfavor!");
+            }
+            JOptionPane.showMessageDialog(this,"Operacion incorrecta"
+                    + " no debe haber espacios debajo de los numeros.");
+        }
+        
+    }//GEN-LAST:event_btVerificarActionPerformed
     ///verificacion 
     private void btVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btVerificarMouseClicked
         
         
     }//GEN-LAST:event_btVerificarMouseClicked
 
-    private void btCobroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCobroMouseClicked
-        if (evt.getSource()==btCobro){
-            JOptionPane.showMessageDialog(null,"");
-            
-        }
-    }//GEN-LAST:event_btCobroMouseClicked
+    private void capturaSisKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_capturaSisKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_capturaSisKeyTyped
+    
+    private void btSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSiguienteActionPerformed
+      if(existe){
+             CobroActualizacion cobro=new CobroActualizacion(sis);
+            cobro.setVisible(true);
+            existe=false;
+      }else{
+           JOptionPane.showMessageDialog(this,"Operacion incorrecta"
+                    + " debe verificar a su estudiante previamente");
+      }
+    }//GEN-LAST:event_btSiguienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,18 +239,16 @@ public class InterfazUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btCobro;
     private javax.swing.JButton btSiguiente;
     private javax.swing.JButton btVerificar;
-    private javax.swing.JTextPane capturaCobro;
     private javax.swing.JTextPane capturaSis;
-    private javax.swing.JTextPane devuelveCambio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea textRetorno;
     // End of variables declaration//GEN-END:variables
 }
