@@ -20,6 +20,7 @@ public class InterfazUsuario extends javax.swing.JFrame {
      */
     public InterfazUsuario() {
         initComponents();
+        this.setResizable(false);
     }
 
     /**
