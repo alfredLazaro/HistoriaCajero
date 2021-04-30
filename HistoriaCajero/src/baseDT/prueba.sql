@@ -93,7 +93,11 @@ CREATE TABLE [Inscripciones] (
 	constraint FK_INSCRIPCIONES_CODSIS foreign key(codSis) references estudiante (codSis)  
 );
 GO
+<<<<<<< HEAD
 /*
+=======
+
+>>>>>>> Javier123
 INSERT INTO Inscripciones([gestionInscrip],[pago]) VALUES('II19',0),('II19',0),('I20',0),('II19',0),('I20',0),('I20',0),('I20',0),('II19',0),('II19',0),('II20',0);
 INSERT INTO Inscripciones([gestionInscrip],[pago]) VALUES('II20',0),('II19',0),('II20',0),('II20',0),('II19',0),('I20',0),('II20',0),('II19',0),('II19',0),('II19',0);
 INSERT INTO Inscripciones([gestionInscrip],[pago]) VALUES('I20',0),('I20',0),('II20',0),('II19',0),('I20',0),('II19',0),('II20',0),('II20',0),('II20',0),('II19',0);
@@ -104,7 +108,11 @@ INSERT INTO Inscripciones([gestionInscrip],[pago]) VALUES('II19',0),('II20',0),(
 INSERT INTO Inscripciones([gestionInscrip],[pago]) VALUES('II19',0),('I20',0),('I20',0),('II20',0),('II20',0),('II19',0),('I20',0),('II19',0),('I20',0),('II20',0);
 INSERT INTO Inscripciones([gestionInscrip],[pago]) VALUES('I20',0),('I20',0),('II19',0),('I20',0),('II20',0),('II20',0),('II19',0),('I20',0),('I20',0),('II19',0);
 INSERT INTO Inscripciones([gestionInscrip],[pago]) VALUES('II20',0),('I20',0),('I20',0),('II19',0),('II20',0),('II19',0),('II20',0),('II20',0),('II20',0),('II20',0);
+<<<<<<< HEAD
 */
+=======
+
+>>>>>>> Javier123
 
 --tabla materia
 CREATE TABLE Materia(
@@ -160,4 +168,3 @@ drop table Estudiante
 drop table Materia
 drop table Inscripciones
 drop table administrador
-drop table Formulario
